@@ -11,7 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2025_08_13_111705) do
-  create_table "challenge_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
+
+  create_table "challenge_tags", force: :cascade do |t|
     t.bigint "challenge_id", null: false
     t.bigint "tag_id", null: false
     t.datetime "created_at", null: false
@@ -20,7 +23,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_13_111705) do
     t.index ["tag_id"], name: "index_challenge_tags_on_tag_id"
   end
 
-  create_table "challenges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "challenges", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.string "difficulty"
@@ -29,13 +32,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_13_111705) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "test_cases", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "test_cases", force: :cascade do |t|
     t.bigint "challenge_id", null: false
     t.text "input_data"
     t.text "expected_output"
@@ -44,7 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_13_111705) do
     t.index ["challenge_id"], name: "index_test_cases_on_challenge_id"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
