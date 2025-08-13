@@ -17,7 +17,9 @@ WORKDIR /rails
 # Install base packages
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl default-mysql-client libjemalloc2 libvips && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives \
+    && curl -sSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y libpq-dev postgresql-client
 
 # Set production environment
 ENV RAILS_ENV="production" \
