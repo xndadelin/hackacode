@@ -17,7 +17,7 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create challenge" do
     assert_difference("Challenge.count") do
-      post challenges_url, params: { challenge: {} }
+      post challenges_url, params: { challenge: { constraints: @challenge.constraints, description: @challenge.description, difficulty: @challenge.difficulty, title: @challenge.title } }
     end
 
     assert_redirected_to challenge_url(Challenge.last)
@@ -34,7 +34,7 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update challenge" do
-    patch challenge_url(@challenge), params: { challenge: {} }
+    patch challenge_url(@challenge), params: { challenge: { constraints: @challenge.constraints, description: @challenge.description, difficulty: @challenge.difficulty, title: @challenge.title } }
     assert_redirected_to challenge_url(@challenge)
   end
 

@@ -14,6 +14,10 @@ class ChallengesTest < ApplicationSystemTestCase
     visit challenges_url
     click_on "New challenge"
 
+    fill_in "Constraints", with: @challenge.constraints
+    fill_in "Description", with: @challenge.description
+    fill_in "Difficulty", with: @challenge.difficulty
+    fill_in "Title", with: @challenge.title
     click_on "Create Challenge"
 
     assert_text "Challenge was successfully created"
@@ -24,6 +28,10 @@ class ChallengesTest < ApplicationSystemTestCase
     visit challenge_url(@challenge)
     click_on "Edit this challenge", match: :first
 
+    fill_in "Constraints", with: @challenge.constraints
+    fill_in "Description", with: @challenge.description
+    fill_in "Difficulty", with: @challenge.difficulty
+    fill_in "Title", with: @challenge.title
     click_on "Update Challenge"
 
     assert_text "Challenge was successfully updated"
