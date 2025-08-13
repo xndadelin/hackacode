@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :challenge_tags
+  resources :challenges
+  resources :tags
+  resources :test_cases
+  resources :problems
+  get "challenges/create"
+  get "challenges/about"
+  get "challenges/create"
   get "users/show"
   devise_for :users
   get "home/index"
