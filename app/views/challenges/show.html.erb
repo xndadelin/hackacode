@@ -1,25 +1,43 @@
-<% content_for :title, "Showing challenge" %>
+<% content_for :head do %>
+  <style>
+    body { overflow: hidden !important; }
+  </style>
+<% end %>
 
-<div class="md:w-2/3 w-full container mx-auto py-10">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
-  <% end %>
-  <div class="flex justify-between items-center mb-6">
-    <h1 class="font-bold text-4xl">
-      <%= link_to "##{@challenge.title}", challenge_path(@challenge), class: "text-primary hover:underline decoration-wavy" %>
-    </h1>
+<% content_for :title, "Showing challenge: #{@challenge.title}" %>
 
-  <% if current_user && current_user.super_admin? %>
-    <div class="flex justify-end">
-      <button class="btn" popovertarget="popover-actions" style="anchor-name:--anchor-actions">
-        ⬇️
-      </button>
-      <ul class="dropdown menu w-52 bg-base-200 rounded-box shadow-sm" popover id="popover-actions" style="position-anchor:--anchor-actions">
-        <%= link_to "Edit", edit_challenge_path(@challenge), class: "w-full font-bold text-center text-lg cursor-pointer hover:underline decoration-wavy" %>
-        <%= link_to "Back to challenges", challenges_path, class: "w-full font-bold text-center text-lg cursor-pointer hover:underline decoration-wavy" %>
-        <%= button_to "Destroy", @challenge, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: 'w-full bg-red-500 text-lg cursor-pointer hover:bg-red-400 text-white font-bold p-0 m-0 rounded' %>
-      </ul>
+
+<div class="flex w-full min-h-screen">
+  <div class="w-1/2 flex flex-col px-8 py-10">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+    <% end %>
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="font-bold text-4xl">
+        <%= link_to "##{@challenge.title}", challenge_path(@challenge), class: "text-primary hover:underline decoration-wavy" %>
+      </h1>
+      <% if current_user && current_user.super_admin? %>
+        <div class="flex justify-end">
+          <button class="btn" popovertarget="popover-actions" style="anchor-name:--anchor-actions">
+            ⬇️
+          </button>
+          <ul class="dropdown menu w-52 bg-base-200 rounded-box shadow-sm" popover id="popover-actions" style="position-anchor:--anchor-actions">
+            <%= link_to "Edit", edit_challenge_path(@challenge), class: "w-full font-bold text-center text-lg cursor-pointer hover:underline decoration-wavy" %>
+            <%= link_to "Back to challenges", challenges_path, class: "w-full font-bold text-center text-lg cursor-pointer hover:underline decoration-wavy" %>
+            <%= button_to "Destroy", @challenge, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: 'w-full bg-red-500 text-lg cursor-pointer hover:bg-red-400 text-white font-bold p-0 m-0 rounded' %>
+          </ul>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+    <div class="mt-8">
+      <p class="text-base-content/70 text-lg mb-4">
+        <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new).render(@challenge.description).html_safe %>
+      </p>
+      <!--<span class="badge badge-outline badge-info">Difficulty: <%= @challenge.difficulty %></span>-->
+    </div>
+  </div>
+  <div class="divider divider-horizontal p-0 m-0"></div>
+  <div class="w-1/2">
+    <textarea name="" id="editor"></textarea>
   </div>
 </div>

@@ -8,3 +8,18 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+
+.divider-horizontal {
+  &.divider {
+    flex-direction: column;
+    width: 0rem;
+    height: auto;
+  }
+}
+
+.CodeMirror {
+    max-height: calc(100vh - 4rem) !important;
+    height: calc(100vh - 4rem) !important;
+    box-sizing: border-box;
+}
