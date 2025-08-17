@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "challenges/new"
+  get "challenges/view"
   resources :challenge_tags
   resources :challenges
   resources :tags
