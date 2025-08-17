@@ -16,10 +16,11 @@
       <% end %>
     </div>
     <p class="text-base-content/70 text-sm mb-4 line-clamp-1">
-      <%= truncate(challenge.description, length: 90) %>
+      <%= truncate(challenge.description, length: 80) %>
     </p>
     <div class="flex items-center gap-2">
       <span class="badge badge-outline badge-info">Difficulty: <%= challenge.difficulty %></span>
     </div>
+    
   </div>
 </div>

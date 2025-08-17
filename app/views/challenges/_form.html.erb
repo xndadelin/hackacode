@@ -115,5 +115,19 @@
       
     <% end %>
     </div>
+
+   <div class="mt-4">
+      <% if controller_name == "challenges" && action_name == "edit" %>
+        <%= link_to "Show this challenge", @challenge, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-primary inline-block font-medium" %>
+      <% end %>
+      <%= link_to "Back to challenges", challenges_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-primary inline-block font-medium" %> 
+   </div>
+  
+  </div>
+<% else %>
+  <div class="max-w-screen w-full bg-base-200 rounded-2xl shadow-xl p-8 mt-8">
+    <p class="text-red-500 font-bold">
+      You do not have permission to edit this challenge.
+    </p>
   </div>
 <% end %>

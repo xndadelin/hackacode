@@ -1,17 +1,22 @@
 <% content_for :title, "Showing challenge" %>
 
-<div class="md:w-2/3 w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
-  <h1 class="font-bold text-4xl">Showing challenge</h1>
-
-  <%= render @challenge %>
+<div class="md:w-2/3 w-full container mx-auto py-10">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="font-bold text-4xl">
+      <%= link_to "##{@challenge.title}", challenge_path(@challenge), class: "text-primary hover:underline decoration-wavy" %>
+    </h1>
 
   <% if current_user && current_user.super_admin? %>
-    <%= link_to "Edit this challenge", edit_challenge_path(@challenge), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-base-200 inline-block font-medium" %>
-    <%= link_to "Back to challenges", challenges_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-base-200 inline-block font-medium" %>
-    <%= button_to "Destroy this challenge", @challenge, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+    <div class="flex justify-end">
+      <button class="btn" popovertarget="popover-actions" style="anchor-name:--anchor-actions">
+        ⬇️
+      </button>
+      <ul class="dropdown menu w-52 bg-base-200 rounded-box shadow-sm" popover id="popover-actions" style="position-anchor:--anchor-actions">
+        <%= link_to "Edit", edit_challenge_path(@challenge), class: "w-full font-bold text-center text-lg cursor-pointer hover:underline decoration-wavy" %>
+        <%= link_to "Back to challenges", challenges_path, class: "w-full font-bold text-center text-lg cursor-pointer hover:underline decoration-wavy" %>
+        <%= button_to "Destroy", @challenge, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: 'w-full bg-red-500 text-lg cursor-pointer hover:bg-red-400 text-white font-bold p-0 m-0 rounded' %>
+      </ul>
+    </div>
   <% end %>
+  </div>
 </div>
