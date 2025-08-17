@@ -19,7 +19,5 @@
 }
 
 .CodeMirror {
-    max-height: calc(100vh - 4rem) !important;
-    height: calc(100vh - 4rem) !important;
-    box-sizing: border-box;
+    height: 100vh !important;
 }
