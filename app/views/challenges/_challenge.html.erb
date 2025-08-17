@@ -1,12 +1,15 @@
 <div id="<%= dom_id challenge %>" class="card bg-base-200 border border-base-300 shadow-lg my-5">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
   <div class="card-body">
     <div class="flex items-center justify-between w-xl">
       <h3 class="text-xl font-bold mb-2">
         <%= link_to challenge.title, challenge_path(challenge.id), class: "link link-hover text-primary" %>
       </h3>
       <% if current_user && current_user.super_admin? %>
-        <button class="btn btn-primary" popovertarget="popover-1" style="anchor-name:--anchor-1">
-          Actions
+        <button class="btn btn-primary btn-outline" popovertarget="popover-1" style="anchor-name:--anchor-1">
+          ⬇️
         </button>
         <ul class="dropdown menu w-52 bg-base-200 rounded-box shadow-sm" popover id="popover-1" style="position-anchor:--anchor-1">
           <%= link_to "Show", challenge, class: 'w-full font-bold text-center text-lg cursor-pointer hover:underline decoration-wavy' %>
