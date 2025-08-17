@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def super_admin?
-    super_admin == true
+    self.super_admin == true
   end
 end

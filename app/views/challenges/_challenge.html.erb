@@ -1,58 +1,25 @@
-<div id="<%= dom_id challenge %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= challenge.title %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Slug:</strong>
-    <%= challenge.slug %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= challenge.description %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Difficulty:</strong>
-    <%= challenge.difficulty %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Time limit:</strong>
-    <%= challenge.time_limit %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Memory limit:</strong>
-    <%= challenge.memory_limit %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Input format:</strong>
-    <%= challenge.input_format %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Output format:</strong>
-    <%= challenge.output_format %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Sample input:</strong>
-    <%= challenge.sample_input %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Sample output:</strong>
-    <%= challenge.sample_output %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Starter code:</strong>
-    <%= challenge.starter_code %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Solution code:</strong>
-    <%= challenge.solution_code %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Source url:</strong>
-    <%= challenge.source_url %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Published:</strong>
-    <%= challenge.published? ? "Yes" : "No" %>
+<div id="<%= dom_id challenge %>" class="card bg-base-200 border border-base-300 shadow-lg my-5">
+  <div class="card-body">
+    <div class="flex items-center justify-between w-xl">
+      <h3 class="text-xl font-bold mb-2">
+        <%= link_to challenge.title, challenge_path(challenge.id), class: "link link-hover text-primary" %>
+      </h3>
+      <% if current_user && current_user.super_admin? %>
+        <button class="btn btn-primary" popovertarget="popover-1" style="anchor-name:--anchor-1">
+          Actions
+        </button>
+        <ul class="dropdown menu w-52 bg-base-200 rounded-box shadow-sm" popover id="popover-1" style="position-anchor:--anchor-1">
+          <%= link_to "Show", challenge, class: 'w-full font-bold text-center text-lg cursor-pointer hover:underline decoration-wavy' %>
+          <%= link_to "Edit", edit_challenge_path(challenge), class: "w-full font-bold text-center text-lg cursor-pointer hover:underline decoration-wavy" %>
+          <%= button_to "Destroy", challenge, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: 'w-full bg-red-500 text-lg cursor-pointer hover:bg-red-400 text-white font-bold p-0 m-0 rounded' %>
+        </ul>
+      <% end %>
+    </div>
+    <p class="text-base-content/70 text-sm mb-4 line-clamp-1">
+      <%= truncate(challenge.description, length: 90) %>
+    </p>
+    <div class="flex items-center gap-2">
+      <span class="badge badge-outline badge-info">Difficulty: <%= challenge.difficulty %></span>
+    </div>
   </div>
 </div>

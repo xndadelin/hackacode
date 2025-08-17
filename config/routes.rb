@@ -1,14 +1,7 @@
 Rails.application.routes.draw do
   get "challenges/new"
   get "challenges/view"
-  resources :challenge_tags
-  resources :challenges
-  resources :tags
-  resources :test_cases
-  resources :problems
-  get "challenges/create"
-  get "challenges/about"
-  get "challenges/create"
+  resources :challenges, param: :id
   get "users/show"
   devise_for :users
   get "home/index"

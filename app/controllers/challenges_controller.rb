@@ -8,6 +8,7 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/1 or /challenges/1.json
   def show
+    @challenge = Challenge.find(params[:id])
   end
 
   # GET /challenges/new
@@ -60,11 +61,11 @@ class ChallengesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_challenge
-      @challenge = Challenge.find(params.expect(:id))
+      @challenge = Challenge.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def challenge_params
-      params.expect(challenge: [ :title, :slug, :description, :difficulty, :time_limit, :memory_limit, :input_format, :output_format, :sample_input, :sample_output, :starter_code, :solution_code, :source_url, :published ])
+      params.require(:challenge).permit(:title, :slug, :description, :difficulty, :time_limit, :memory_limit, :input_format, :output_format, :sample_input, :sample_output, :starter_code, :solution_code, :source_url, :published)
     end
 end
