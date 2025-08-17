@@ -1,0 +1,58 @@
+<div id="<%= dom_id challenge %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= challenge.title %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Slug:</strong>
+    <%= challenge.slug %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= challenge.description %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Difficulty:</strong>
+    <%= challenge.difficulty %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Time limit:</strong>
+    <%= challenge.time_limit %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Memory limit:</strong>
+    <%= challenge.memory_limit %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Input format:</strong>
+    <%= challenge.input_format %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Output format:</strong>
+    <%= challenge.output_format %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Sample input:</strong>
+    <%= challenge.sample_input %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Sample output:</strong>
+    <%= challenge.sample_output %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Starter code:</strong>
+    <%= challenge.starter_code %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Solution code:</strong>
+    <%= challenge.solution_code %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Source url:</strong>
+    <%= challenge.source_url %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Published:</strong>
+    <%= challenge.published? ? "Yes" : "No" %>
+  </div>
+</div>

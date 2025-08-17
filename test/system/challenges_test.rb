@@ -14,9 +14,19 @@ class ChallengesTest < ApplicationSystemTestCase
     visit challenges_url
     click_on "New challenge"
 
-    fill_in "Constraints", with: @challenge.constraints
     fill_in "Description", with: @challenge.description
     fill_in "Difficulty", with: @challenge.difficulty
+    fill_in "Input format", with: @challenge.input_format
+    fill_in "Memory limit", with: @challenge.memory_limit
+    fill_in "Output format", with: @challenge.output_format
+    check "Published" if @challenge.published
+    fill_in "Sample input", with: @challenge.sample_input
+    fill_in "Sample output", with: @challenge.sample_output
+    fill_in "Slug", with: @challenge.slug
+    fill_in "Solution code", with: @challenge.solution_code
+    fill_in "Source url", with: @challenge.source_url
+    fill_in "Starter code", with: @challenge.starter_code
+    fill_in "Time limit", with: @challenge.time_limit
     fill_in "Title", with: @challenge.title
     click_on "Create Challenge"
 
@@ -28,9 +38,19 @@ class ChallengesTest < ApplicationSystemTestCase
     visit challenge_url(@challenge)
     click_on "Edit this challenge", match: :first
 
-    fill_in "Constraints", with: @challenge.constraints
     fill_in "Description", with: @challenge.description
     fill_in "Difficulty", with: @challenge.difficulty
+    fill_in "Input format", with: @challenge.input_format
+    fill_in "Memory limit", with: @challenge.memory_limit
+    fill_in "Output format", with: @challenge.output_format
+    check "Published" if @challenge.published
+    fill_in "Sample input", with: @challenge.sample_input
+    fill_in "Sample output", with: @challenge.sample_output
+    fill_in "Slug", with: @challenge.slug
+    fill_in "Solution code", with: @challenge.solution_code
+    fill_in "Source url", with: @challenge.source_url
+    fill_in "Starter code", with: @challenge.starter_code
+    fill_in "Time limit", with: @challenge.time_limit
     fill_in "Title", with: @challenge.title
     click_on "Update Challenge"
 

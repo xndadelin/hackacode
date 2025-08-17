@@ -1,0 +1,87 @@
+<%= form_with(model: challenge, class: "contents") do |form| %>
+  <% if challenge.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(challenge.errors.count, "error") %> prohibited this challenge from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% challenge.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:title].none?, "border-red-400 focus:outline-red-600": challenge.errors[:title].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :slug %>
+    <%= form.text_field :slug, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:slug].none?, "border-red-400 focus:outline-red-600": challenge.errors[:slug].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :description %>
+    <%= form.textarea :description, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:description].none?, "border-red-400 focus:outline-red-600": challenge.errors[:description].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :difficulty %>
+    <%= form.number_field :difficulty, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:difficulty].none?, "border-red-400 focus:outline-red-600": challenge.errors[:difficulty].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :time_limit %>
+    <%= form.number_field :time_limit, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:time_limit].none?, "border-red-400 focus:outline-red-600": challenge.errors[:time_limit].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :memory_limit %>
+    <%= form.number_field :memory_limit, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:memory_limit].none?, "border-red-400 focus:outline-red-600": challenge.errors[:memory_limit].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :input_format %>
+    <%= form.textarea :input_format, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:input_format].none?, "border-red-400 focus:outline-red-600": challenge.errors[:input_format].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :output_format %>
+    <%= form.textarea :output_format, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:output_format].none?, "border-red-400 focus:outline-red-600": challenge.errors[:output_format].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :sample_input %>
+    <%= form.textarea :sample_input, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:sample_input].none?, "border-red-400 focus:outline-red-600": challenge.errors[:sample_input].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :sample_output %>
+    <%= form.textarea :sample_output, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:sample_output].none?, "border-red-400 focus:outline-red-600": challenge.errors[:sample_output].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :starter_code %>
+    <%= form.textarea :starter_code, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:starter_code].none?, "border-red-400 focus:outline-red-600": challenge.errors[:starter_code].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :solution_code %>
+    <%= form.textarea :solution_code, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:solution_code].none?, "border-red-400 focus:outline-red-600": challenge.errors[:solution_code].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :source_url %>
+    <%= form.text_field :source_url, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": challenge.errors[:source_url].none?, "border-red-400 focus:outline-red-600": challenge.errors[:source_url].any?}] %>
+  </div>
+
+  <div class="my-5 flex items-center gap-2">
+    <%= form.label :published %>
+    <%= form.checkbox :published, class: ["block shadow-sm rounded-md border order-first h-5 w-5", {"border-gray-400 focus:outline-blue-600": challenge.errors[:published].none?, "border-red-400 focus:outline-red-600": challenge.errors[:published].any?}] %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

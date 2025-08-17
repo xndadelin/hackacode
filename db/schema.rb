@@ -10,9 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_13_111705) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_17_145010) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "challenges", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.text "description"
+    t.integer "difficulty"
+    t.integer "time_limit"
+    t.integer "memory_limit"
+    t.text "input_format"
+    t.text "output_format"
+    t.text "sample_input"
+    t.text "sample_output"
+    t.text "starter_code"
+    t.text "solution_code"
+    t.string "source_url"
+    t.boolean "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
