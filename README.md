@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+export $(cat .env | xargs)
+docker build \
+  --build-arg RAILS_ENV=$RAILS_ENV \
+  --build-arg DATABASE_URL=$DATABASE_URL \
+  --build-arg SECRET_KEY_BASE=$SECRET_KEY_BASE \
+  -t hackacode .
