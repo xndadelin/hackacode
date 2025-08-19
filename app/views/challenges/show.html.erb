@@ -31,10 +31,8 @@ to do: fix this later, fix doesnt seem to work. its sticks if i choose one of th
         </div>
       <% end %>
     </div>
-    <div class="mt-8">
-      <p class="text-base-content/70 text-lg mb-4">
+    <div class="mt-8 description">
         <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new).render(@challenge.description).html_safe %>
-      </p>
       <!--<span class="badge badge-outline badge-info">Difficulty: <%= @challenge.difficulty %></span>-->
     </div>
   </div>
