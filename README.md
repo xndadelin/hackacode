@@ -1,7 +1,9 @@
 # README
 
-export $(cat .env | xargs)
+```export $(cat .env | xargs)
 docker build \
   --build-arg RAILS_ENV=$RAILS_ENV \
   --build-arg DATABASE_URL=$DATABASE_URL \
   -t hackacode .
+
+docker run --env-file .env -p <port>:3000 hackacode```
