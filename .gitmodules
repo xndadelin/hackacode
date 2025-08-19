@@ -1,0 +1,3 @@
+[submodule "hackacode-judger"]
+	path = hackacode-judger
+	url = git@github.com:xndadelin/hackacode-judger.git
