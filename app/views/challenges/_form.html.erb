@@ -35,6 +35,13 @@
       </div>
 
       <div class="form-control">
+        <%= form.label :preview, class: "label font-normal" do %>
+          Preview
+        <% end %>
+        <%= form.text_field :preview, class: 'input input-bordered w-full', required: true %>
+      </div>
+
+      <div class="form-control">
         <%= form.label :difficulty, class: "label font-normal" do %>
           Difficulty <span class="text-red-500">*</span>
         <% end %>

@@ -68,7 +68,7 @@ class ChallengesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def challenge_params
-      params.require(:challenge).permit(:title, :slug, :description, :difficulty, :time_limit, :memory_limit, :input_format, :output_format, :sample_input, :sample_output, :starter_code, :solution_code, :source_url, :published)
+      params.require(:challenge).permit(:title, :slug, :description, :difficulty, :time_limit, :memory_limit, :input_format, :output_format, :sample_input, :sample_output, :starter_code, :solution_code, :source_url, :published, :preview)
     end
 
     def require_super_admin!
