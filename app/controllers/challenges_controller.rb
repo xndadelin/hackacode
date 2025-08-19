@@ -1,5 +1,7 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :require_super_admin!, only: %i[ new create edit update destroy ]
 
   # GET /challenges or /challenges.json
   def index
@@ -67,5 +69,11 @@ class ChallengesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def challenge_params
       params.require(:challenge).permit(:title, :slug, :description, :difficulty, :time_limit, :memory_limit, :input_format, :output_format, :sample_input, :sample_output, :starter_code, :solution_code, :source_url, :published)
+    end
+
+    def require_super_admin!
+      unless current_user&.super_admin?
+        redirect_to challenges_path, alert: "You must be a super admin to perform this action."
+      end
     end
 end
