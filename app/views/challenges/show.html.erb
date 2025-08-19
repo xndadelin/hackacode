@@ -9,12 +9,92 @@ to do: fix this later, fix doesnt seem to work. its sticks if i choose one of th
 <% content_for :title, "Showing challenge: #{@challenge.title}" %>
 
 
+<style>
+  .description p {
+    margin-bottom: 0.5 rem;
+    color: #FFFFFF;
+  }
+
+  .description h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .description h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .description h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .description ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .description ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .description li {
+    margin-bottom: 0.5rem
+  }
+
+  .description blockquote {
+    border-left: 4px solid #D1D5DB;
+    padding-left: 1rem;
+    font-style: italic;
+    color: #4B5563;
+    margin-bottom: 0.5rem;
+  }
+
+  .description pre {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+    overflow-x: auto;
+  }
+
+  .description code {
+    background-color: #394246ff;
+    PADDING: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  .scrollbar {
+    scrollbar-width: none;
+    scrollbar-color: none;
+  }
+
+  .CodeMirror {
+    height: 100% !important;
+    overflow-x: auto !important;
+    max-height: calc(100vh - 64px) !important;
+    margin-left: 0;
+  }
+
+</style>
+
 <div class="flex w-full min-h-screen">
-  <div class="w-1/2 flex flex-col px-8 py-10">
+  <div class="w-1/2 flex max-h-[calc(100vh-32px)] flex-col px-8 py-10 overflow-y-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
     <% end %>
-    <div class="flex justify-between items-center mb-6">
+    <div class="flex justify-between items-center">
       <h1 class="font-bold text-4xl">
         <%= link_to "##{@challenge.title}", challenge_path(@challenge), class: "text-primary hover:underline decoration-wavy" %>
       </h1>
@@ -31,14 +111,14 @@ to do: fix this later, fix doesnt seem to work. its sticks if i choose one of th
         </div>
       <% end %>
     </div>
-    <div class="mt-8 description">
-        <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new).render(@challenge.description).html_safe %>
+    <div class="mt-8 description overflow-y-auto scrollbar">
+        <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(hard_wrap: true)).render(@challenge.description).html_safe %>
       <!--<span class="badge badge-outline badge-info">Difficulty: <%= @challenge.difficulty %></span>-->
     </div>
   </div>
   <div class="divider divider-horizontal p-0 m-0"></div>
   <div class="w-1/2 relative">
-    <textarea name="" id="editor">
+    <textarea name="" id="editor" class="max-h-[calc(100vh-64px)]">
       <%= @challenge.starter_code %>
     </textarea>
      <button class="absolute bottom-20 right-2 z-50 btn btn-primary btn-outline">Submit</button>
