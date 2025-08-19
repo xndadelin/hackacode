@@ -39,7 +39,10 @@ to do: fix this later, fix doesnt seem to work. its sticks if i choose one of th
     </div>
   </div>
   <div class="divider divider-horizontal p-0 m-0"></div>
-  <div class="w-1/2">
-    <textarea name="" id="editor"></textarea>
+  <div class="w-1/2 relative">
+    <textarea name="" id="editor">
+      <%= @challenge.starter_code %>
+    </textarea>
+     <button class="absolute bottom-20 right-2 z-50 btn btn-primary btn-outline">Submit</button>
   </div>
 </div>

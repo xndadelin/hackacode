@@ -19,5 +19,7 @@
 }
 
 .CodeMirror {
-    height: 100vh !important;
+  overflow: auto !important;
+  height: calc(100vh - 64px) !important;
+  max-height: calc(100vh - 64px) !important;
 }
